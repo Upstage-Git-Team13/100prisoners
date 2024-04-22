@@ -1,3 +1,4 @@
+import math
 # 3. 전체 시뮬레이션
 # 3번 팀원 코드
 def prison_escape_simulation(boxes):
@@ -20,3 +21,17 @@ def prisoner_attempt(prisoner_number, boxes):
         current_box = current_number  # 다음 상자
     
     return False  # 50회 이상 시도 후 실패
+
+def get_success_percentage(nth: int) -> int:
+    
+    successfully_escaped = 0
+    
+    for _ in range(nth):
+        suffled_boxes = suffle_box()
+        
+        if prison_escape_simulation(suffled_boxes): 
+           successfully_escaped += 1
+    
+    rate = successfully_escaped / nth * 100
+    return  "죄수들은 %f % 확률로 성공합니다." % (math.floor(rate))
+        
